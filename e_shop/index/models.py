@@ -1,5 +1,3 @@
-from tkinter.constants import CASCADE
-
 from django.db import models
 
 
@@ -7,11 +5,12 @@ from django.db import models
 # Создаем таблицу категорий
 class Category(models.Model):
     category_name = models.CharField(max_length=64)  # то что главнее пишем раньше, потому что продукт
+
     # привязывается к категориям
 
     def __str__(self):
         return str(self.category_name)  # прописывается чтобы название категорий и продуктов прописывалось
-        # нормально без обджекта
+        # нормально без объекта
 
 
 # Создаем таблицу продукта
@@ -35,5 +34,4 @@ class Cart(models.Model):
     user_id = models.IntegerField()
     user_product = models.ForeignKey(Product, on_delete=models.CASCADE)  # опять идет связка с классом Product,
     # который юзер будет добавлять в корзину из продуктов
-    user_pr_count = models.IntegerField() # что выбрал юзер в корзине
-
+    user_pr_count = models.IntegerField()  # что выбрал юзер в корзине
