@@ -10,7 +10,7 @@ class Category(models.Model):
 
     def __str__(self):
         return str(self.category_name)  # прописывается чтобы название категорий и продуктов прописывалось
-        # нормально без объекта
+        # нормально без слова объект
 
 
 # Создаем таблицу продукта
@@ -19,7 +19,7 @@ class Product(models.Model):
     product_des = models.TextField()
     product_price = models.FloatField()
     product_count = models.IntegerField()  # сколько у нас на складе есть товара
-    product_photo = models.ImageField()
+    product_photo = models.ImageField(upload_to='media')
     product_category = models.ForeignKey(Category, on_delete=models.CASCADE)  # потому что это подкатегория нами
     # созданного класса Category, дается ключ ForeignKey, и нужно указать on_delete = models.CASCADE,
     # чтобы мы могли отвязать от главной таблицы
